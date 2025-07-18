@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ресторан</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<script>
+  document.getElementById('toggle-review-form').addEventListener('click', function () {
+    const form = document.getElementById('review-form');
+    form.style.display = form.style.display === 'none' ? 'block' : 'none';
+  });
+</script>
+<script>
+    function handleLogin(event) {
+      event.preventDefault();
+      // логика входа...
+    }
+    function requireLogin() {
+      alert('Вы должны войти');
+    }
+    function showScreen(id) {
+      document.querySelectorAll('.screen').forEach(screen => screen.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
+    }
+    function handleSearch(e) {
+      e.preventDefault();
+      const query = document.querySelector('.search').value.trim();
+      if (query) alert('Вы ввели: ' + query);
+    }
+    function submitReview(event) {
+      event.preventDefault();
+      const name = document.getElementById('reviewer-name').value;
+      const stars = '★★★★★';
+      const date = '7 июля 2025';
+      const text = document.getElementById('review-text').value;
+      const newBlock = document.createElement('div');
+      newBlock.className = 'review-content';
+      newBlock.innerHTML = `
+        <div class="review-header">
+          <strong>\${name}</strong>
+          <span class="date">\${date}</span>
+          <span class="stars">\${stars}</span>
+        </div>
+        <p class="review-text">\${text}</p>
+      `;
+      document.querySelector('.review').appendChild(newBlock);
+      event.target.reset();
+    }
+
+    // Инициализация
+    showScreen('menu');
+  </script>
+  <script>
+  function requireLogin() {
+    if (isLoggedIn) {
+      showScreen('booking'); // Показываем экран бронирования
+    } else {
+      alert("Пожалуйста, войдите, чтобы забронировать столик.");
+    }
+  }
+</script>
+
+  <script>
+  let isLoggedIn = false;
+  function openLoginModal() {
+    document.getElementById('login-modal').style.display = 'block';
+  }
+
+  function closeLoginModal() {
+    document.getElementById('login-modal').style.display = 'none';
+  }
+
+  function submitLogin() {
+    const username = document.getElementById('username-input').value.trim();
+
+    if (username) {
+      isLoggedIn = true;
+      // Заменяем кнопку на имя
+      const loginBtn = document.getElementById('loginBtn');
+      loginBtn.textContent = username;
+      loginBtn.disabled = true; // можно отключить, если не нужно повторно нажимать
+
+      // Закрываем модальное окно
+      closeLoginModal();
+    } else {
+      alert("Введите имя пользователя!");
+    }
+  }
+
+  // Закрытие модального окна при клике вне его
+  window.onclick = function(event) {
+    const modal = document.getElementById('login-modal');
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+
+</script>
+<script>function openOrderModal() {
+  if (!isLoggedIn) {
+    alert("Пожалуйста, войдите, чтобы заказать.");
+    return;
+  }
+  document.getElementById('order-modal').style.display = 'block';
+}
+
+function closeOrderModal() {
+  document.getElementById('order-modal').style.display = 'none';
+}
+
+function submitOrder() {
+  const name = document.getElementById('order-name').value.trim();
+  const table = document.getElementById('order-table').value;
+
+  if (!name || !table) {
+    alert("Пожалуйста, введите имя и выберите столик.");
+    return;
+  }
+
+  alert(`Спасибо, ${name}! Ваш заказ для столика №${table} принят.`);
+  closeOrderModal();
+}
+
+// Закрыть при клике вне модалки
+window.addEventListener('click', function(event) {
+  const modal = document.getElementById('order-modal');
+  if (event.target === modal) {
+    modal.style.display = "none";
+  }
+});
+let bonuses = 0; // глобальная переменная для счётчика
+
+function openOrderModal() {
+  if (!isLoggedIn) {
+    alert("Пожалуйста, войдите, чтобы заказать.");
+    return;
+  }
+  document.getElementById('order-modal').style.display = 'block';
+}
+
+function closeOrderModal() {
+  document.getElementById('order-modal').style.display = 'none';
+}
+
+function submitOrder() {
+  const name = document.getElementById('order-name').value.trim();
+  const table = document.getElementById('order-table').value;
+
+  if (!name || !table) {
+    alert("Пожалуйста, введите имя и выберите столик.");
+    return;
+  }
+
+  // ✅ Увеличиваем бонусы
+  bonuses += 1;
+  document.getElementById('bonus-counter').textContent = `Бонусы: ${bonuses}`;
+
+  alert(`Спасибо, ${name}! Ваш заказ для столика №${table} принят.`);
+
+  // Закрытие и очистка формы
+  closeOrderModal();
+  document.getElementById("order-name").value = "";
+  document.getElementById("order-table").value = "";
+}
+
+// Закрытие при клике вне модального окна
+window.addEventListener('click', function(event) {
+  const modal = document.getElementById('order-modal');
+  if (event.target === modal) {
+    modal.style.display = "none";
+  }
+});
+</script>
+<body>
+  <header class="header">
+    <h1 class="logo">Ресторан "Бешбармак"</h1>
+  
+
+  <button id="loginBtn" class="login-btn" onclick="openLoginModal()">Войти / Зарегистрироваться</button>
+
+<!-- Модальное окно -->
+<div id="login-modal" class="modal">
+  <div class="modal-content">
+    <div class="wrapper">
+      <h1>Войти</h1>
+      <div class="input-box">
+        <input type="text" id="username-input" placeholder="Введите имя пользователя" required>
+        <i class='bx bx-user'></i>
+      </div>
+      <div class="input-box">
+        <input type="text" placeholder="Введите пароль" required>
+        <i class='bx bx-lock-alt'></i>
+      </div>
+      <div class="remember">
+        <label><input type="checkbox">Запомнить меня</label>
+        <a href="#">Забыл пароль</a>
+      </div>
+
+      <button type="button" class="btn" onclick="submitLogin()">Войти</button>
+
+      <div class="register-link">
+        <p>Нету аккаунта? <a href="index_reg.html" style="color: inherit; text-decoration: none;">Зарегистрироваться</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="order-modal" class="modal-ord">
+  <div class="modal-ord-content order-content">
+    <h3>Заказ столика</h3>
+    <label for="order-name">Имя:</label>
+    <input type="text" id="order-name" placeholder="Кому подать?" required />
+
+    <label for="order-table">Выберите столик:</label>
+    <select id="order-table">
+      <option value="">Выберите столик</option>
+      
+      <option value="1">Столик 1</option>
+      <option value="2">Столик 2</option>
+      <option value="3">Столик 3</option>
+      <option value="4">Столик 4</option>
+      <option value="5">Столик 5</option>
+      <option value="6">Столик 6</option>
+      <option value="7">Столик 7</option>
+      <option value="8">Столик 8</option>
+      <option value="9">Столик 9</option>
+      <option value="10">Столик 10</option>
+      <option value="11">Столик 11</option>
+      <option value="12">Столик 12</option>
+      <option value="13">Столик 13</option>
+      <option value="14">Столик 14</option>
+      <option value="15">Столик 15</option>
+      <option value="16">Столик 16</option>
+      <option value="17">Столик 17</option>
+      <option value="18">Столик 18</option>
+      <option value="19">Столик 19</option>
+      <option value="20">Столик 20</option>
+      <option value="21">Столик 21</option>
+      <option value="22">Столик 22</option>
+      <option value="23">Столик 23</option>
+      <option value="24">Столик 24</option>
+      <option value="25">Столик 25</option>
+      <option value="26">Столик 26</option>
+      <option value="27">Столик 27</option>
+      <option value="28">Столик 28</option>
+      <option value="29">Столик 29</option>
+      <option value="30">Столик 30</option>
+      <option value="31">Столик 31</option>
+      <option value="32">Столик 32</option>
+      <option value="33">Столик 33</option>
+      <option value="34">Столик 34</option>
+      <option value="35">Столик 35</option>
+      <option value="36">Столик 36</option>
+      <option value="37">Столик 37</option>
+      <option value="38">Столик 38</option>
+      <option value="39">Столик 39</option>
+      <option value="40">Столик 40</option>
+      <option value="41">Столик 41</option>
+      <option value="42">Столик 42</option>
+      <option value="43">Столик 43</option>
+      <option value="44">Столик 44</option>
+      <select id="order-table" required></select>
+    </select>
+
+    <div class="modal-ord-actions">
+      <button onclick="submitOrder()" class="sbm-btn" >Отправить</button>
+      <button onclick="closeOrderModal()" class="cancel-btn">Отмена</button>
+    </div>
+  </div>
+</div>
+
+  </header>
+  <div class="bonuses-display">
+  Бонусы: <span id="bonus-count">0</span>
+  </div>
+
+  <div class="container">
+    
+    <div class="nav">
+      <button onclick="showScreen('menu')">Меню</button>
+      <button onclick="showScreen('history')">История</button>
+      <button onclick="showScreen('contacts')">Контакты</button>
+      <button onclick="showScreen('reviews')">Отзывы</button>
+      <button onclick="requireLogin()" onclick="showScreen('booking')">Бронирование</button>
+
+      <span class="bonus">Бонусы: 0</span>
+      
+      <form class="search-form" onsubmit="handleSearch(event)">
+        <input type="text" class="search" placeholder="Поиск...">
+        <button type="submit" class="submit">Искать</button>
+      </form>
+    </div>
+
+    <div class="screen" id="menu">
+      <h2>Меню</h2>
+
+      <h3>Основные мясные блюда</h3>
+      <hr style="border: 2px solid black;">
+      <div class="menu-grid">
+        <!-- мясные -->
+        <div class="menu-item">
+          <img src="images/serving-beshbarmak.webp" alt="Бешбармак">
+          <p class="price">Бешбармак</p>
+          <p class="price">2000 ₸</p>
+          <h6 class="ingredients">Ингредиенты: конина, баранина или говядина, домашняя лапша, лук, мясной бульон, соль, перец.</h6>
+          
+          <button id="loginBtn" class="history-btn" onclick="openOrderModal()">Заказать</button>
+        </div>
+        <div class="menu-item">
+          <img src="images/куырдак.jpg" alt="Куырдак">
+          <p class="price">Куырдак</p>
+          <p class="price">1700 ₸</p>
+          <h6 class="ingredients">Ингредиенты: печень, сердце, лёгкие, картофель, лук, жир, соль, чёрный перец.</h6>
+          <button id="loginBtn" class="history-btn" onclick="openOrderModal()">Заказать</button>
+        </div>
+        <div class="menu-item">
+          <img src="images/казы.jpg" alt="Казы">
+          <p class="price">Казы</p>
+          <p class="price">2500 ₸</p>
+          <h6 class="ingredients">Ингредиенты: конина (рёберное мясо), чеснок, соль, перец, натуральная оболочка.</h6>
+          <button id="loginBtn" class="history-btn" onclick="openOrderModal()">Заказать</button>
+        </div>
+        <div class="menu-item">
+          <img src="images/жая.jpg" alt="Жая">
+          <p class="price">Жая</p>
+          <p class="price">2300 ₸</p>
+          <h6 class="ingredients">Ингредиенты: конина, соль, специи, сушится вялением.</h6>
+          <button id="loginBtn" class="history-btn" onclick="openOrderModal()">Заказать</button>
+        </div>
+        
+        
+      </div>
+
+      <h3>Мучные и закусочные блюда</h3>
+      <hr style="border: 2px solid black;">
+      <div class="menu-grid">
+        <div class="menu-item">
+          <img src="images/баурсак.jpg" alt="Баурсаки">
+          <p class="price">Баурсаки</p>
+          <p class="price">700 ₸</p>
+          <h6 class="ingredients">Ингредиенты: мука, дрожжи, вода или молоко, соль, сахар, растительное масло.</h6>
+          <button id="loginBtn" class="history-btn" onclick="openOrderModal()">Заказать</button>
+        </div>
+        <div class="menu-item">
+          <img src="images/салма.jpeg" alt="Салма">
+          <p class="price">Салма</p>
+          <p class="price">1200 ₸</p>
+          <h6 class="ingredients">Ингредиенты: лапша домашняя, мясной бульон, мясо, картофель, лук, специи.</h6>
+          <button id="loginBtn" class="history-btn" onclick="openOrderModal()">Заказать</button>
+        </div>
+        <div class="menu-item">
+          <img src="images/манты.avif" alt="Манты">
+          <p class="price">Манты</p>
+          <p class="price">1500 ₸</p>
+          <h6 class="ingredients">Ингредиенты: тесто, фарш из баранины или говядины, лук, жир, специи.</h6>
+          <button id="loginBtn" class="history-btn" onclick="openOrderModal()">Заказать</button>
+        </div>
+        <div class="menu-item">
+          <img src="images/самса.avif" alt="Самса">
+          <p class="price">Самса</p>
+          <p class="price">900 ₸</p>
+          <h6 class="ingredients">Ингредиенты: слоёное или обычное тесто, фарш из мяса, лук, специи.</h6>
+          <button id="loginBtn" class="history-btn" onclick="openOrderModal()">Заказать</button>
+        </div>
+        <div class="menu-item">
+          <img src="images/лепешка.jpg" alt="Лепешка">
+          <p class="price">Лепешка</p>
+          <p class="price">300 ₸</p>
+          <h6 class="ingredients">Ингредиенты: мука, вода, соль, дрожжи.</h6>
+          <button id="loginBtn" class="history-btn" onclick="openOrderModal()">Заказать</button>
+        </div>
+        
+      </div>
+
+      <h3>Молочные продукты</h3>
+      <hr style="border: 2px solid black;">
+      <div class="menu-grid">
+        <div class="menu-item">
+          <img src="images/курт.jpg" alt="Курт">
+          <p class="price">Курт</p>
+          <p class="price">300 ₸</p>
+          <h6 class="ingredients">Ингредиенты: сушёный творог, соль, формируется в шарики.</h6>
+          <button id="loginBtn" class="history-btn" onclick="openOrderModal()">Заказать</button>
+        </div>
+        <div class="menu-item">
+          <img src="images/иримшик.jpg" alt="Ірімшік">
+          <p class="price">Ірімшік</p>
+          <p class="price">500 ₸</p>
+          <h6 class="ingredients">Ингредиенты: домашний творог, сахар, молоко, сушёные фрукты (по желанию).</h6>
+          <button id="loginBtn" class="history-btn" onclick="openOrderModal()">Заказать</button>
+        </div>
+        <div class="menu-item">
+          <img src="images/айран.avif" alt="Айран">
+          <p class="price">Айран</p>
+          <p class="price">400 ₸</p>
+          <h6 class="ingredients">Ингредиенты: кефир, вода, соль, мята (по желанию).</h6>
+          <button id="loginBtn" class="history-btn" onclick="openOrderModal()">Заказать</button>
+        </div>
+        
+        
+      </div>
+
+      <h3>Десерты</h3>
+      <hr style="border: 2px solid black;">
+      <div class="menu-grid">
+        <div class="menu-item">
+          <img src="images/чак-чак.jpg" alt="Чак-чак">
+          <p class="price">Чак-чак</p>
+          <p class="price">800 ₸</p>
+          <h6 class="ingredients">Ингредиенты: тесто, мёд, масло, сахар.</h6>
+          <button id="loginBtn" class="history-btn" onclick="openOrderModal()">Заказать</button>
+        </div>
+        
+        <div class="menu-item">
+          <img src="images/жент.jpg" alt="Жент">
+          <p class="price">Жент</p>
+          <p class="price">600 ₸</p>
+          <h6 class="ingredients">Ингредиенты: молотое просо, сахар, масло, курт.</h6>
+          <button id="loginBtn" class="history-btn" onclick="openOrderModal()">Заказать</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen" id="history">
+      <h1>История ресторана «Бешбармак»</h1>
+
+  <h2>Зарождение идеи — 1997–1999</h2>
+  <p>В конце 1990‑х годов, после нескольких лет работы в сфере управления ресторанным делом в разных уголках Казахстана, молодой повар Алмас Сарсенов задумался о возвращении к корням казахской кухни. Во время семейных встреч он наблюдал, как бабушка на семейных праздниках с любовью готовила бесценные домашние блюда, и особенно — бесбармак. Именно тогда Алмас решил создать небольшое заведение, где традиции сочетались бы с современным комфортом. Уже в марте 1999 года, собрав скромный стартовый капитал и заручившись поддержкой старых друзей, он открыл первую кухню‑столовую на окраине Алматы, разместив в меню лишь пять‑шесть блюд, но приготовленных по старинным рецептам.</p>
+
+  <h2>Первые гости и становление бренда — 2000–2004</h2>
+  <p>С самого начала «Бешбармак» выделялся на фоне других заведений простотой интерьера и душевной атмосферой. В зале не было громкой музыки и пафосных декораций — только деревянные столы, расшитые одеяла и приглушённый свет. Гости ценили домашний уют и искреннюю улыбку хозяина. Постепенно, благодаря «сарафанному радио», о кафе заговорили в местных кругах. В 2002 году к Алмасу присоединилась его сестра Алия, взяв на себя коммуникации с поставщиками и организовав доставку продуктов прямо с фермерских хозяйств. Именно тогда «Бешбармак» впервые получил положительный отзыв от популярного гастрономического журнала.</p>
+
+  <h2>Расширение меню и интерьерные эксперименты — 2005–2008</h2>
+  <p>К середине 2000‑х годов гости ресторана стремились не только к бесбармаку, но и к новым блюдам. Алия и Алмас решили расширить меню: добавили казахскую уху, бешпармак‑кебаб и домашние баурсаки. Каждый рецепт они тщательно тестировали, приглашая в гости шеф‑поваров из Алматы и Астаны. В 2006 году был проведён ребрендинг: появилась новая вывеска с каллиграфическим логотипом, а в интерьере зала появились национальные ковры и керамические изделия от местных мастеров. Это обеспечило «Бешбармаку» репутацию эстетичного заведения с акцентом на ремёсла.</p>
+
+  <h2>Открытие филиалов и франчайзинг — 2009–2013</h2>
+  <p>После первых успешных лет работы владельцы получили предложение от деловых партнёров открыть второй ресторан в центре Астаны. Стратегия франчайзинга была выбрана осторожно: владельцы тщательно отбирали инвесторов и проводили обучение персонала по собственной методике. К 2011 году «Бешбармак» уже трижды расширялся в Алматы и дважды в Астане, а также имел небольшой филиал в городе Караганде. Каждое новое место повторяло дизайн‑код старейшего ресторана, но адаптировалось под местные традиции: для филиала в Караганде добавили местный вариант лепёшек и особенности оформления в стиле местного промыслового искусства.</p>
+
+  <h2>Туристический успех и международное признание — 2014–2017</h2>
+  <p>К середине десятилетия «Бешбармак» превратился в неотъемлемую часть туристического маршрута по Казахстану. В 2015 году ресторан был отмечен международными гидами как обязательное место для посещения, а в 2016‑м команда отправилась на гастрономический фестиваль в Москву, где представила коллекцию блюд в формате «live‑приглашения» к приготовлению бесбармака на глазах у публики. Этот шаг привлёк внимание иностранных журналистов, и уже в 2017‑м «Бешбармак» получил приглашение на кулинарный форум во Франции, где делегация из Казахстана провела мастер‑класс по национальным блюдам.</p>
+
+  <h2>Цифровая трансформация и новые форматы — 2018–2020</h2>
+  <p>Перед пандемией «Бешбармак» успешно запустил собственное мобильное приложение и сайт с возможностью не только бронирования столиков, но и заказа «семейных наборов» на вынос. В приложении были доступны видео‑рецепты от Алмаса и советы по выбору ингредиентов. В 2019 году ресторан внедрил систему электронных купонов и подарочных сертификатов, что помогло укрепить связь с постоянными клиентами и увеличить продажи в праздники. В начале 2020‑го «Бешбармак» ввёл безконтактную доставку и упаковку блюд «в дорогу», что оказалось спасительным решением во время ограничений.</p>
+
+  <h2>Социальная ответственность и культурные проекты — 2021–2024</h2>
+  <p>После окончания локдаунов «Бешбармак» сосредоточился на социальных инициативах: запустил программу «Искусство вкуса» с поддержкой молодых поваров из малых городов и организовал серию бесплатных мастер‑классов в школах. Параллельно открылись «вечерние ужины» с живой музыкой кюй, где гости могли не только попробовать национальные блюда, но и познакомиться с казахскими инструментами. При поддержке городских властей в 2023 году была открыта «кулинарная школа» при главном ресторане, где по выходным проходили интенсивы и лекции по истории казахской гастрономии.</p>
+
+  <h2>Взгляд в будущее</h2>
+  <p>Сейчас «Бешбармак» готовится к следующему этапу — запуску мобильного фуд‑трака, который будет передвигаться по туристическим локациям страны и за её пределами. Алия и Алмас планируют расширить международное присутствие, предлагая бизнес‑модуль франчайзинга в странах СНГ и Европы. При этом душевная атмосфера, семейные рецепты и забота о гостях по-прежнему остаются в основе философии ресторана — именно они позволяют «Бешбармаку» сохранять статус не просто точки питания, а культурного бренда, соединяющего поколения.</p>
+</div>
+
+    <div class="screen" id="contacts">
+      <h2>Контакты</h2>
+
+
+  <p><strong>Адрес:</strong> г. Алматы, ул. Абая, 45</p>
+
+
+  <p><strong>Режим работы:</strong> Пн–Вс: 10:00 – 23:00</p>
+
+
+  <p><strong>Телефон:</strong> <a href="tel:+77789780003">+7778 978 0003</a></p>
+
+
+  <p><strong>Email:</strong> <a href="mailto:er.ansat@gmail.com">er.ansat@gmail.com</a></p>
+
+
+  <h3>Связаться с нами</h3>
+  <form class="contact-form">
+    <input type="text" placeholder="Ваше имя" required>
+    <input type="email" placeholder="Ваш email" required>
+    <textarea placeholder="Ваше сообщение..." required></textarea>
+    <button type="submit" class="button-review">Отправить</button>
+  </form>
+    </div>
+
+    <div class="screen" id="reviews">
+        
+      <h2>Отзывы наших гостей</h2>
+
+<div class="review">
+
+  <div class="review-content">
+    <div class="review-header">
+      <strong>Екатерина В.</strong>
+      <span class="date">12 декабря 2021</span>
+      <span class="stars">★★★★☆</span>
+    </div>
+    <p class="review-text">Уютная атмосфера и отличный сервис. Понравился фирменный бешбармак с бараниной.</p>
+  </div>
+
+  <div class="review-content">
+    <div class="review-header">
+      <strong>Максим Л.</strong>
+      <span class="date">3 марта 2022</span>
+      <span class="stars">★★★★★</span>
+    </div>
+    <p class="review-text">Лучший лагман, который я пробовал! Порции огромные, атмосфера очень дружелюбная.</p>
+  </div>
+
+  <div class="review-content">
+    <div class="review-header">
+      <strong>Нуржан А.</strong>
+      <span class="date">28 июля 2022</span>
+      <span class="stars">★★★☆☆</span>
+    </div>
+    <p class="review-text">Красивая подача блюд, но ждали заказ чуть дольше ожидания. В остальном всё вкусно.</p>
+  </div>
+
+  <div class="review-content">
+    <div class="review-header">
+      <strong>София М.</strong>
+      <span class="date">10 февраля 2023</span>
+      <span class="stars">★★★★★</span>
+    </div>
+    <p class="review-text">Обожаю их баурсаки — хрустящие снаружи и нежные внутри. Обязательно приду ещё!</p>
+  </div>
+
+  <div class="review-content">
+    <div class="review-header">
+      <strong>Алексей Т.</strong>
+      <span class="date">1 мая 2023</span>
+      <span class="stars">★★★★☆</span>
+    </div>
+    <p class="review-text">Хорошее меню для вегетарианцев. Цветная капуста на гриле — настоящий сюрприз!</p>
+  </div>
+
+  <div class="review-content">
+    <div class="review-header">
+      <strong>Дарья Н.</strong>
+      <span class="date">6 ноября 2023</span>
+      <span class="stars">★★★★★</span>
+    </div>
+    <p class="review-text">Незабываемые этно-вечера с живой музыкой. Вкус еды полностью соответствует ожиданиям.</p>
+  </div>
+
+  <div class="review-content">
+    <div class="review-header">
+      <strong>Илья К.</strong>
+      <span class="date">15 апреля 2024</span>
+      <span class="stars">★★★★☆</span>
+    </div>
+    <p class="review-text">Хороший выбор на десерт: кошеле и чак-чак просто тают во рту.</p>
+  </div>
+
+  <div class="review-content">
+    <div class="review-header">
+      <strong>Айшат С.</strong>
+      <span class="date">9 августа 2024</span>
+      <span class="stars">★★★★★</span>
+    </div>
+    <p class="review-text">Первый раз посетила, рекомендую всем! Интерьер очень стильный и национальный.</p>
+  </div>
+
+  <div class="review-content">
+    <div class="review-header">
+      <strong>Роман П.</strong>
+      <span class="date">22 сентября 2024</span>
+      <span class="stars">★★★☆☆</span>
+    </div>
+    <p class="review-text">Понравилось всё, кроме сильного аромата специй. Для любителей острого будет в самый раз.</p>
+  </div>
+
+  <div class="review-content">
+    <div class="review-header">
+      <strong>Лейла Ж.</strong>
+      <span class="date">30 июня 2025</span>
+      <span class="stars">★★★★★</span>
+    </div>
+    <p class="review-text">Доставили заказ вовремя, порции большие, вкус домашний — как у бабушки!</p>
+  </div>
+
+</div>
+  <h3>Оставьте свой отзыв</h3>
+<form class="review-form" onsubmit="submitReview(event)">
+  <div class="form-row">
+    <input type="text" id="reviewer-name" placeholder="Ваше имя" required>
+    <select id="review-rating" required>
+      <option value="">Оценка</option>
+      <option value="5">★★★★★</option>
+      <option value="4">★★★★☆</option>
+      <option value="3">★★★☆☆</option>
+      <option value="2">★★☆☆☆</option>
+      <option value="1">★☆☆☆☆</option>
+    </select>
+  </div>
+  <textarea id="review-text" placeholder="Ваш отзыв..." required></textarea>
+  <button type="submit" class="button-review">Отправить</button>
+</form>
+</div>
+
+          
+    </div>
+  
+  </div>
+
+  <div class="screen" id="booking" style="display: none;">
+    <h2 style="text-align: center;">Карта зала ресторана</h2>
+  <div id="booking-map" style="padding: 20px;">
+    <!-- Генерация 8 строк по 12 столов -->
+    <!-- Пример для 1 строки -->
+    <div class="seat">1</div>
+    <div class="seat">2</div>
+    <div class="chair"></div>
+    <div class="seat">13</div>
+    <div class="seat">14</div>
+    <div class="chair"></div>
+    <div class="seat">21</div>
+    <div class="seat">22</div>
+    <div class="chair"></div>
+    <div class="seat">29</div>
+    <div class="chair"></div>
+    <div class="seat">33</div>
+
+    <!-- Пример для 2 строки -->
+    <div class="seat">3</div>
+    <div class="seat">4</div>
+    <div class="chair"></div>
+    <div class="seat">15</div>
+    <div class="seat">16</div>
+    <div class="chair"></div>
+    <div class="seat">23</div>
+    <div class="seat">24</div>
+    <div class="chair"></div>
+    <div class="seat">30</div>
+    <div class="chair"></div>
+    <div class="seat">34</div>
+    <!-- Пример для 3 строки -->
+    <div class="seat">5</div>
+    <div class="seat">6</div>
+    <div class="chair"></div>
+    <div class="chair"></div>
+    <div class="chair"></div>
+    <div class="chair"></div>
+    <div class="chair"></div>
+    <div class="chair"></div>
+    <div class="chair"></div>
+    <div class="chair"></div>
+    <div class="chair"></div>
+    <div class="chair"></div>
+    <!-- Пример для 4 строки -->
+    <div class="chair"></div>
+    <div class="chair"></div>
+    <div class="chair"></div>
+    <div class="seat">17</div>
+    <div class="seat">18</div>
+    <div class="chair"></div>
+    <div class="seat">25</div>
+    <div class="seat">26</div>
+    <div class="chair"></div>
+    <div class="seat">31</div>
+    <div class="chair"></div>
+    <div class="seat">35</div>
+    <!-- Пример для 5 строки -->
+    <div class="seat">7</div>
+    <div class="seat">8</div>
+    <div class="chair"></div>
+    <div class="seat">19</div>
+    <div class="seat">20</div>
+    <div class="chair"></div>
+    <div class="seat">27</div>
+    <div class="seat">28</div>
+    <div class="chair"></div>
+    <div class="seat">32</div>
+    <div class="chair"></div>
+    <div class="seat">36</div>
+    <!-- Пример для 6 строки -->
+    <div class="seat">9</div>
+    <div class="seat">10</div>
+    <div class="chair"></div>
+    <div class="chair"></div>
+    <div class="chair"></div>
+    <div class="chair"></div>
+    <div class="chair"></div>
+    <div class="chair"></div>
+    <div class="chair"></div>
+    <div class="chair"></div>
+    <div class="chair"></div>
+    <div class="chair"></div>
+    <!-- Пример для 7 строки -->
+    <div class="seat">11</div>
+    <div class="seat">12</div>
+    <div class="chair"></div>
+    <div class="chair"></div>
+    <div class="chair"></div>
+    <div class="chair"></div>
+    <div class="chair"></div>
+    <div class="chair"></div>
+    <div class="chair"></div>
+    <div class="seat">37</div>
+    <div class="seat">38</div>
+    <div class="seat">39</div>
+    
+
+    <!-- Последняя строка с выходом в центре -->
+    <div class="chair"></div>
+    <div class="seat">43</div>
+    <div class="seat">44</div>
+    <div class="chair"></div>
+    <div></div>
+    <div class="exit">Выход</div>
+    <div></div>
+    <div class="chair"></div>
+    <div class="chair"></div>
+    <div class="seat">40</div>
+    <div class="seat">41</div>
+    <div class="seat">42</div>
+  </div>
+  <script>
+  function submitReview(event) {
+  event.preventDefault(); // отменяем переход
+
+  const name  = document.getElementById('reviewer-name').value;
+  const stars = parseInt(document.getElementById('review-rating').value); // преобразуем в число
+  const date  = '7 июля 2025';
+  const text  = document.getElementById('review-text').value;
+
+  // переводим число в звёзды
+  const starText = getStars(stars);
+
+  // создаём блок
+  const newBlock = document.createElement('div');
+  newBlock.className = 'review-content';
+  newBlock.innerHTML = `
+    <div class="review-header">
+      <strong>${name}</strong>
+      <span class="date">${date}</span>
+      <span class="stars">${starText}</span>
+    </div>
+    <p class="review-text">${text}</p>
+  `;
+
+  document.querySelector('.review').appendChild(newBlock);
+  event.target.reset();
+}
+
+function getStars(num) {
+  const fullStar = '★';
+  const emptyStar = '☆';
+  return fullStar.repeat(num) + emptyStar.repeat(5 - num);
+}
+  </script>
+
+  <script>
+    function showScreen(id) {
+      document.querySelectorAll('.screen').forEach(screen => {
+        screen.style.display = 'none';
+      });
+      document.getElementById(id).style.display = 'block';
+    }
+
+    function handleSearch(e) {
+      e.preventDefault();
+      const query = document.querySelector('.search').value.trim();
+      if (query) {
+        alert('Вы ввели: ' + query);
+      }
+    }
+
+    showScreen('menu');
+  </script>
+</body>
+</html>
