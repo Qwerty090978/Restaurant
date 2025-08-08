@@ -1353,13 +1353,12 @@ hr {
 }
 
 
-
 .faq-answer {
-  padding: 16px 24px;
   display: none;
-  background-color: #181818;
-  color: #ccc;
   animation: fadeIn 0.3s ease-in-out;
+  padding: 16px 24px;
+  background-color: #4b2f0b;
+  color: #ffffff;
 }
 
 .faq-item.active .faq-answer {
