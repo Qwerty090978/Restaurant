@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ресторан</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body style="background-color: #fcfcfc;">
+    <header class="header">
+    
+                    
+    <h1 class="logo">
+       Ресторан "Бешбармак"
+       <i class='bx bx-restaurant' style="padding-left: 10px;"></i>
+    </h1>
+    
+    <nav class="nav1">
+    <p><a href="index_menu.html" style="color: inherit; text-decoration: none">Меню</a></p>
+    <p><a href="index_history.html" style="color: inherit; text-decoration: none">История</a></p>
+    <p><a href="index_contacts.html" style="color: inherit; text-decoration: none">Контакты</a></p>
+    <p><a href="index_review.html" style="color: inherit; text-decoration: none">Вопросы</a></p>
+    
+    
+  </nav>
+
+  <div class="top-right">
+  <form class="search-form1" onsubmit="handleSearch(event)">
+    <input type="text" class="search" placeholder="Поиск...">
+  </form>
+
+  <a href="log_ans.html" class="login-btn11">Войти</a>
+</div>
+<!-- Модальное окно -->
+
+
+  </header>
+  <p class="main" style="padding-top: 110px; padding-bottom: 10px; padding-left: 130px;"><a style="text-decoration: none" class="main1" href="index.html">Главная</a> > <a style="text-decoration: none" class="main2"href="index_menu.html">Меню</a></p>
+    
+      <h2 style="margin-top: 20px;margin-bottom: 20px;margin-left: 130px; font-size: 40px; font-weight: bold;">Меню</h2>
+
+      <div class="main-wrapper" >
+  <!-- Левое меню -->
+  <aside class="side-menu" style="margin-left: 10px; margin-top: 0px; border: 2px solid #4b2f0b; padding: 10px; border-radius: 5px;">
+    <ul>
+      <li style="margin-top: 15px; margin-bottom: 18px;"><a href="#novinki">Рекомендуемые</a></li>
+      <li style="margin-top: 18px; margin-bottom: 18px;"><a href="#combo-zavtraki">Основные мясные блюда</a></li>
+      <li style="margin-top: 18px; margin-bottom: 18px;"><a href="#combo">Комбо</a></li>
+      <li style="margin-top: 18px; margin-bottom: 18px;"><a href="#zavtraki">Мучные и закусочные блюда</a></li>
+      <li style="margin-top: 18px; margin-bottom: 18px;"><a href="#popular">Молочные продукты</a></li>
+      <li style="margin-top: 18px; margin-bottom: 18px;"><a href="#mini">Десерты</a></li>
+      
+    </ul>
+  </aside>
+
+  <!-- Правая часть — блюда -->
+  <section class="menu-content" style="margin-bottom: 40px;">
+
+  <!-- Рекомендуемые -->
+   
+  <h3 id="novinki" class="section-title">Рекомендуемые</h3>
+<hr style="border: 2px solid black;">
+<div class="menu-row">
+  <div class="menu-card">
+    <img src="images/дастархан.jpg" alt="Дастархан">
+    <h3 style="margin-top: 40px;">"Дастархан"</h3>
+    <h5 style="margin-top: 20px;">
+      Бешбармак (2 порции), Айран 1,5 л, Баурсаки (10 шт), соус на катыке, лепёшка<br>
+      Традиционный семейный набор, идеально подходит для обеда на двоих — сытно, вкусно и по-домашнему.
+    </h5>
+    <p class="price">Цена: 7500 ₸</p>
+  </div>
+
+  <div class="menu-card">
+    <img src="images/беш.png" alt="Бешбармак">
+    <h3 style="margin-top: 40px;">Бешбармак</h3>
+    <h5 style="margin-top: 20px;">
+      Отварная конина и говядина, лапша ручной работы, ароматный бульон, тушёный лук, зелень<br>
+      Классическое казахское блюдо, которое подается на все торжества и семейные ужины.
+    </h5>
+    <p class="price">Цена: 6900 ₸</p>
+  </div>
+
+  <div class="menu-card">
+    <img src="images/коже комбо.jpg" alt="Наурыз Спешл">
+    <h3 style="margin-top: 40px;">"Наурыз Спешл"</h3>
+    <h5 style="margin-top: 20px;">
+      Наурыз коже (2 порции), Хворост, Кумыс 1 л, Жент, рулет из казы<br>
+      Праздничный сет в духе весеннего праздника — для тех, кто хочет попробовать все самое вкусное за один раз.
+    </h5>
+    <p class="price">Цена: 5200 ₸</p>
+  </div>
+
+  <div class="menu-card">
+    <img src="images/коже.jpg" alt="Наурыз коже">
+    <h3 style="margin-top: 40px;">Наурыз коже</h3>
+    <h5 style="margin-top: 20px;">
+      Казы, курдючный жир, пшено, вода, кефир, соль, зелёный лук<br>
+      Освежающее традиционное блюдо, которое готовится только на праздник Наурыз — сытный и полезный суп.
+    </h5>
+    <p class="price">Цена: 7200 ₸</p>
+  </div>
+</div>
+
+  <!-- Основные мясные блюда -->
+  <h3 id="combo-zavtraki" class="section-title">Основные мясные блюда</h3>
+  <hr style="border: 2px solid black;">
+  <div class="menu-grid">
+    <div class="menu-item">
+      <img src="images/serving-beshbarmak.webp" alt="Бешбармак">
+      <p class="price">Бешбармак</p>
+      
+      <h6 class="ingredients">Ингредиенты: конина, баранина или говядина, домашняя лапша, лук, бульон.</h6>
+      <button id="loginBtn" class="history-btn" onclick="openOrderModal()"style="font-size: 18px;">Цена: 2000 ₸</button>
+    </div>
+    <div class="menu-item">
+      <img src="images/куырдак.jpg" alt="Куырдак">
+      <p class="price">Куырдак</p>
+      
+      <h6 class="ingredients">Ингредиенты: печень, сердце, лёгкие, картофель, лук, жир, специи.</h6>
+      <button id="loginBtn" class="history-btn" onclick="openOrderModal()"style="font-size: 18px;">Цена: 1700 ₸</button>
+    </div>
+    <div class="menu-item">
+      <img src="images/казы.jpg" alt="Казы">
+      <p class="price">Казы</p>
+      
+      <h6 class="ingredients">Ингредиенты: конина (рёберное мясо), чеснок, соль, перец, натуральная оболочка.</h6>
+      <button id="loginBtn" class="history-btn" onclick="openOrderModal()"style="font-size: 18px;">Цена: 2500 ₸</button>
+    </div>
+    <div class="menu-item">
+      <img src="images/жая.jpg" alt="Жая">
+      <p class="price">Жая</p>
+      
+      <h6 class="ingredients">Ингредиенты: конина, соль, специи, сушится вялением.</h6>
+      <button id="loginBtn" class="history-btn" onclick="openOrderModal()"style="font-size: 18px;">Цена: 2300 ₸</button>
+    </div>
+    <div class="menu-item">
+  <img src="images/сорпа.jpg" alt="Сорпа">
+  <p class="price">Сорпа</p>
+  
+  <h6 class="ingredients">
+    Ингредиенты: бульон из говядины или конины, лук, специи, зелень.
+  </h6>
+  <button id="loginBtn" class="history-btn" onclick="openOrderModal()" style="font-size: 18px;">
+    Цена: 900 ₸
+  </button>
+</div>
+<div class="menu-item">
+  <img src="images/коже.jpg" alt="Наурыз коже">
+  <p class="price">Наурыз коже</p>
+  
+  <h6 class="ingredients">
+    Ингредиенты: казы, курдючный жир, зёрна, кефир, вода, соль, зелень.
+  </h6>
+  <button id="loginBtn" class="history-btn" onclick="openOrderModal()" style="font-size: 18px;">
+    Цена: 1200 ₸
+  </button>
+</div>
+  </div>
+
+  <!-- Мучные и закусочные блюда -->
+  <h3 id="zavtraki" class="section-title">Мучные и закусочные блюда</h3>
+  <hr style="border: 2px solid black;">
+  <div class="menu-grid">
+    <div class="menu-item">
+      <img src="images/баурсак.jpg" alt="Баурсаки">
+      <p class="price">Баурсаки</p>
+      
+      <h6 class="ingredients">Ингредиенты: мука, дрожжи, вода или молоко, соль, сахар, масло.</h6>
+      <button id="loginBtn" class="history-btn" onclick="openOrderModal()"style="font-size: 18px;">Цена: 700 ₸</button>
+    </div>
+    <div class="menu-item">
+      <img src="images/салма.jpeg" alt="Салма">
+      <p class="price">Салма</p>
+      
+      <h6 class="ingredients">Ингредиенты: лапша, бульон, мясо, картофель, лук, специи.</h6>
+      <button id="loginBtn" class="history-btn" onclick="openOrderModal()"style="font-size: 18px;">Цена: 1200 ₸</button>
+    </div>
+    <div class="menu-item">
+      <img src="images/манты.avif" alt="Манты">
+      <p class="price">Манты</p>
+      
+      <h6 class="ingredients">Ингредиенты: тесто, фарш, лук, жир, специи.</h6>
+      <button id="loginBtn" class="history-btn" onclick="openOrderModal()"style="font-size: 18px;">Цена: 1500 ₸</button>
+    </div>
+    <div class="menu-item">
+      <img src="images/самса.avif" alt="Самса">
+      <p class="price">Самса</p>
+      
+      <h6 class="ingredients">Ингредиенты: тесто, фарш, лук, специи.</h6>
+      <button id="loginBtn" class="history-btn" onclick="openOrderModal()"style="font-size: 18px;">Цена: 900 ₸</button>
+    </div>
+    <div class="menu-item">
+      <img src="images/лепешка.jpg" alt="Лепешка">
+      <p class="price">Лепешка</p>
+      
+      <h6 class="ingredients">Ингредиенты: мука, вода, соль, дрожжи.</h6>
+      <button id="loginBtn" class="history-btn" onclick="openOrderModal()"style="font-size: 18px;">Цена: 300 ₸</button>
+    </div>
+    <div class="menu-item">
+  <img src="images/каттама.jpg" alt="Каттама">
+  <p class="price">Каттама</p>
+  
+  <h6 class="ingredients">
+    Ингредиенты: слоёное тесто, масло, мука, соль.
+  </h6>
+  <button id="loginBtn" class="history-btn" onclick="openOrderModal()" style="font-size: 18px;">
+    Цена: 600 ₸
+  </button>
+</div>
+  </div>
+
+  <!-- Молочные продукты -->
+  <h3 id="popular" class="section-title">Молочные продукты</h3>
+  <hr style="border: 2px solid black;">
+  <div class="menu-grid">
+    <div class="menu-item">
+      <img src="images/курт.jpg" alt="Курт">
+      <p class="price">Курт</p>
+      
+      <h6 class="ingredients">Ингредиенты: сушёный творог, соль, шарики.</h6>
+      <button id="loginBtn" class="history-btn" onclick="openOrderModal()"style="font-size: 18px;">Цена: 300 ₸</button>
+    </div>
+    <div class="menu-item">
+      <img src="images/иримшик.jpg" alt="Ірімшік">
+      <p class="price">Ірімшік</p>
+      
+      <h6 class="ingredients">Ингредиенты: творог, сахар, молоко, фрукты.</h6>
+      <button id="loginBtn" class="history-btn" onclick="openOrderModal()"style="font-size: 18px;">Цена: 500 ₸</button>
+    </div>
+    <div class="menu-item">
+      <img src="images/айран.avif" alt="Айран">
+      <p class="price">Айран</p>
+      
+      <h6 class="ingredients">Ингредиенты: кефир, вода, соль, мята.</h6>
+      <button id="loginBtn" class="history-btn" onclick="openOrderModal()"style="font-size: 18px;">Цена: 400 ₸</button>
+    </div>
+  </div>
+
+  <!-- Десерты -->
+  <h3 id="mini" class="section-title">Десерты</h3>
+  <hr style="border: 2px solid black;">
+  <div class="menu-grid">
+    <div class="menu-item">
+      <img src="images/чак-чак.jpg" alt="Чак-чак">
+      <p class="price">Чак-чак</p>
+      
+      <h6 class="ingredients">Ингредиенты: тесто, мёд, масло, сахар.</h6>
+      <button id="loginBtn" class="history-btn" onclick="openOrderModal()"style="font-size: 18px;">Цена: 800 ₸</button>
+    </div>
+    <div class="menu-item">
+      <img src="images/жент.jpg" alt="Жент">
+      <p class="price">Жент</p>
+      
+      <h6 class="ingredients">Ингредиенты: молотое просо, сахар, масло, курт.</h6>
+      <button id="loginBtn" class="history-btn" onclick="openOrderModal()"style="font-size: 18px;">Цена: 600 ₸</button>
+    </div>
+    <div class="menu-item">
+  <img src="images/сумаляк.jpg" alt="Сумаляк">
+  <p class="price">Сумаляк</p>
+  
+  <h6 class="ingredients">
+    Ингредиенты: пророщенная пшеница, мука, масло, вода, орехи, сахар, соль.
+  </h6>
+  <button id="loginBtn" class="history-btn" onclick="openOrderModal()" style="font-size: 18px;">
+    Цена: 1000 ₸
+  </button>
+</div>
+  </div>
+
+  <!-- Комбо -->
+  <h3 id="combo" class="section-title">Комбо</h3>
+<hr style="border: 2px solid black;">
+<div class="menu-grid">
+  <div class="menu-item">
+    <img src="images/дастархан.jpg" alt="Дастархан">
+    <p class="price">"Дастархан"</p>
+    
+    <h6 class="ingredients">Бешбармак (2 порции), Айран 1.5 л, Баурсаки (10 шт), соус на катыке, лепёшка. Идеально подходит для обеда на двоих — сытно, вкусно и по-домашнему.</h6>
+    <button id="loginBtn" class="history-btn" onclick="openOrderModal()"style="font-size: 18px;">Цена: 7500 ₸</button>
+  </div>
+  <div class="menu-item">
+    <img src="images/коже комбо.jpg" alt="Наурыз Спешл">
+    <p class="price">"Наурыз Спешл"</p>
+    
+    <h6 class="ingredients">Наурыз коже (2 порции), Хворост, Кумыс 1 л, Жент, рулет из казы. Праздничный сет — всё самое вкусное в одном наборе.</h6>
+    <button id="loginBtn" class="history-btn" style="margin-top: 30px;" onclick="openOrderModal()" style="font-size: 18px;">Цена: 5200 ₸</button>
+  </div>
+  <div class="menu-item">
+    <img src="images/той.jpg" alt="Наурыз Спешл">
+    <p class="price">"Ұлыс күні"</p>
+    
+    <h6 class="ingredients">Бешбармак (2 порции), Наурыз коже (2 порции), Баурсаки (10 шт), Кумыс 1 л, Жент, рулет из казы, лепёшка. Большой праздничный сет — всё традиционное в одном наборе.</h6>
+    <button id="loginBtn" class="history-btn" onclick="openOrderModal()"style="font-size: 18px;">Цена: 9900 ₸</button>
+  </div>
+</div>
+
+</section>
+
+</div>
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-column">
+      <h4>Навигация</h4>
+      <p><a href="index_menu.html">Меню</a></p>
+      <p><a href="index_history.html">История</a></p>
+      <p><a href="index_contacts.html">Контакты</a></p>
+      <p><a href="index_review.html">Отзывы</a></p>
+      <p><a href="#" onclick="requireLogin(); showScreen('booking')">Бронирование</a></p>
+    </div>
+
+    <div class="footer-column">
+      <h4>О нас</h4>
+      <p><a href="#">О компании</a></p>
+      <p><a href="#">Новости</a></p>
+      <p><a href="#">Наше качество</a></p>
+      <p><a href="#">Услуги</a></p>
+    </div>
+
+    <div class="footer-column">
+      <h4>Контакты</h4>
+      <p>Email: <a href="mailto:er.ansat@gmail.com">er.ansat@gmail.com</a></p>
+      <p>Тел: <a href="tel:+77080880503">+7 708 088 0503</a></p>
+      <p>Адрес: г. Алматы, ул. Тимирязева 18А</p>
+    </div>
+
+    <div class="footer-column logo-social">
+      <i class='bx bx-restaurant'></i>
+      <p>© 2025 Бешбармак</p>
+      <div class="social-icons">
+        <a href="#"><i class='bx bxl-instagram'></i></a>
+        <a href="#"><i class='bx bxl-youtube'></i></a>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+  <div class="footer-bottom">
+    <p><a href="#">Политика конфиденциальности</a></p>
+  </div>
+</footer>
+
+
+</body>
+</html>

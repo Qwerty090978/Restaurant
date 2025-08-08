@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ресторан</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <header class="header">
+    
+                    
+    <h1 class="logo">
+       Ресторан "Бешбармак"
+       <i class='bx bx-restaurant' style="padding-left: 10px;"></i>
+    </h1>
+    
+    <nav class="nav1">
+    <p><a href="index_menu.html" style="color: inherit; text-decoration: none">Меню</a></p>
+    <p><a href="index_history.html" style="color: inherit; text-decoration: none">История</a></p>
+    <p><a href="index_contacts.html" style="color: inherit; text-decoration: none">Контакты</a></p>
+    <p><a href="index_review.html" style="color: inherit; text-decoration: none">Вопросы</a></p>
+    
+    
+  </nav>
+
+  <div class="top-right">
+  <form class="search-form1" onsubmit="handleSearch(event)">
+    <input type="text" class="search" placeholder="Поиск...">
+  </form>
+
+  <a href="#" class="login-btn11">Войти</a>
+</div>
+
+
+  </header>
+  <p class="main"class="main"style="padding-top: 110px; padding-bottom: 10px; padding-left: 130px;"><a style="text-decoration: none"class="main1"href="index.html">Главная</a> > <a style="text-decoration: none"class="main2"href="index_menu.html">Оставить отзыв</a></p>
+  <div class="screen" id="reviews">
+      <section class="faq-section">
+  <h2>Часто задаваемые вопросы</h2>
+  <div class="faq-container">
+
+    <div class="faq-item">
+      <button class="faq-question">Из чего готовится настоящий бешбармак?</button>
+      <div class="faq-answer">
+        Наш бешбармак готовится по традиционному рецепту: используется конина (казы), говядина, домашняя лапша и наваристый сорпа. Подаётся с луком и бульоном.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Готовите ли вы баурсаки на месте?</button>
+      <div class="faq-answer">
+        Да, баурсаки мы жарим непосредственно перед подачей. Это позволяет сохранить их мягкость и аромат. Используем только натуральные ингредиенты: муку высшего сорта, дрожжи, молоко и масло.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Что входит в состав Наурыз коже?</button>
+      <div class="faq-answer">
+        Наурыз коже содержит 7 компонентов: мясо, воду, соль, крупу, кефир, жир и лук. Мы придерживаемся классического рецепта, символизирующего изобилие и благополучие.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Вы используете казы и жая собственного приготовления?</button>
+      <div class="faq-answer">
+        Да, казы и жая мы готовим самостоятельно из фермерской конины, выдерживаем в правильных условиях и по традиционной технологии. Это гарантирует аутентичный вкус.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Можно ли собрать праздничный сет с доставкой?</button>
+      <div class="faq-answer">
+        Конечно. У нас есть готовые праздничные сеты, включающие бешбармак, баурсаки, жент, рулет из казы, наурыз коже, кумыс и многое другое. Доставка осуществляется по предварительному заказу.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Чем отличается ваш жент от магазинного?</button>
+      <div class="faq-answer">
+        Наш жент готовится вручную из свежей пшеничной крупы, сливочного масла и натурального сахара. Мы не используем консервантов и ароматизаторов, только традиционный домашний рецепт.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Можно ли прийти в ресторан большой семьёй?</button>
+      <div class="faq-answer">
+        Да, у нас есть просторные столы для больших компаний и семей. Также мы предлагаем бронирование заранее и индивидуальное оформление столов под праздник.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Подходит ли ваше меню для национальных праздников?</button>
+      <div class="faq-answer">
+        Наше меню специально разработано для праздников: наурыз, тусау кесу, асы, сундeт той и др. Мы готовим по всем правилам казахской традиционной кухни.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Какие напитки подают к традиционным блюдам?</button>
+      <div class="faq-answer">
+        К блюдам подаются кумыс, шубат, айран и чай с баурсаками. Все напитки натуральные и идеально сочетаются с нашими блюдами.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Есть ли возможность попробовать блюда перед заказом на банкет?</button>
+      <div class="faq-answer">
+        Да, вы можете прийти на дегустацию по предварительной записи. Мы подготовим мини-наборы из ключевых блюд, чтобы вы могли выбрать оптимальное меню.
+      </div>
+    </div>
+
+  </div>
+</section>
+  <footer class="footer">
+  <div class="footer-container">
+    <div class="footer-column">
+      <h4>Навигация</h4>
+      <p><a href="index_menu.html">Меню</a></p>
+      <p><a href="index_history.html">История</a></p>
+      <p><a href="index_contacts.html">Контакты</a></p>
+      <p><a href="index_review.html">Отзывы</a></p>
+      <p><a href="#" onclick="requireLogin(); showScreen('booking')">Бронирование</a></p>
+    </div>
+
+    <div class="footer-column">
+      <h4>О нас</h4>
+      <p><a href="#">О компании</a></p>
+      <p><a href="#">Новости</a></p>
+      <p><a href="#">Наше качество</a></p>
+      <p><a href="#">Услуги</a></p>
+    </div>
+
+    <div class="footer-column">
+      <h4>Контакты</h4>
+      <p>Email: <a href="mailto:er.ansat@gmail.com">er.ansat@gmail.com</a></p>
+      <p>Тел: <a href="tel:+77080880503">+7 708 088 0503</a></p>
+      <p>Адрес: г. Алматы, ул. Тимирязева 18А</p>
+    </div>
+
+    <div class="footer-column logo-social">
+      <i class='bx bx-restaurant'></i>
+      <p>© 2025 Бешбармак</p>
+      <div class="social-icons">
+        <a href="#"><i class='bx bxl-instagram'></i></a>
+        <a href="#"><i class='bx bxl-youtube'></i></a>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+  <div class="footer-bottom">
+    <p><a href="#">Политика конфиденциальности</a></p>
+  </div>
+</footer>
+
+
+    
+</body>
+</html>
