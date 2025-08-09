@@ -118,12 +118,12 @@ body {
   cursor: pointer;
   transition: 0.3s;
   font-size: 18px;
-  margin-top: 20px;
+  margin-top: 10px;
   display: flex;
   flex-wrap: wrap;
   position: absolute;
   
-  margin-bottom: 4px;
+  margin-bottom: 6px;
   left: 180%;
 }
 .login-btn1:hover {
