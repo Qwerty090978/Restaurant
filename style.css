@@ -122,7 +122,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   position: absolute;
-  bottom: 230%;
+  bottom: 250%;
   margin-bottom: 4px;
   left: 180%;
 }
