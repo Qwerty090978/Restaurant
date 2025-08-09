@@ -118,11 +118,11 @@ body {
   cursor: pointer;
   transition: 0.3s;
   font-size: 18px;
-  margin-top: 5px;
+  margin-top: 10px;
   display: flex;
   flex-wrap: wrap;
   position: absolute;
-  bottom:150%;
+  bottom:160%;
   
   left: 180%;
 }
