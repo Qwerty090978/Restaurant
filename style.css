@@ -122,7 +122,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   position: absolute;
-  bottom: 280%;
+  bottom: 230%;
   left: 180%;
 }
 .login-btn1:hover {
