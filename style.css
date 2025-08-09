@@ -122,8 +122,8 @@ body {
   display: flex;
   flex-wrap: wrap;
   position: absolute;
-  bottom: 187%;
-  left: 150%;
+  bottom: 190%;
+  left: 190%;
 }
 .login-btn1:hover {
   background-color: white;
