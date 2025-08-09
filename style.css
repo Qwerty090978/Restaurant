@@ -122,7 +122,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   position: absolute;
-  bottom:260%;
+  bottom:240%;
   
   left: 180%;
 }
