@@ -123,6 +123,7 @@ body {
   flex-wrap: wrap;
   position: absolute;
   bottom: 230%;
+  margin-bottom: 10px;
   left: 180%;
 }
 .login-btn1:hover {
